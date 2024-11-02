@@ -1,5 +1,5 @@
 import { initialSignInFormData, initialSignUpFormData } from "@/config";
-import { registerService } from "@/services";
+import { registerService, loginService } from "@/services";
 import { createContext, useState } from "react";
 
 export const AuthContext = createContext(null);
@@ -11,7 +11,11 @@ export default function AuthProvider({ children }) {
   async function handleRegisterUser(event){
     event.preventDefault();
     const data = await registerService(signUpFormData);
-    console.log("data",data)
+  }
+
+  async function handleLoginUser(event){
+    event.preventDefault();
+    const data = await loginService(signInFormData);
   }
   return (
     <AuthContext.Provider
@@ -21,6 +25,7 @@ export default function AuthProvider({ children }) {
         signUpFormData,
         setSignUpFormData,
         handleRegisterUser,
+        handleLoginUser,
       }}
     >
       {children}
