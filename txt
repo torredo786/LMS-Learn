@@ -1,0 +1,70 @@
+created front end - npm create vite@latest
+created server folder
+
+server - bcrypt ,cloudinary, cors, express, mongoose, dotenv, jsonwebtoken, multer, paypal-rest-sdk
+
+
+client: axios, react-router-dom
+
+
+>server -  npm init -y: it will create package.json folder in server folder
+    create server.js: then in package.json -> change to "main": "index.js",=> "main": "server.js",
+
+    npm i --save-dev nodemon: create package.lock.json and some change in package.json
+
+    update - "start": "server.js"
+            "dev": "nodemon server.js"
+
+
+    then: npm i bcrypt cloudinary cors express mongoose dotenv jsonwebtoken multer paypal-rest-sdk
+
+>client:- 
+    npm install -D tailwindcss postcss autoprefixer
+
+    npx tailwindcss init -p
+    update: content: ["./src/**/*.{html,js}"],=> in tailwind.config file
+
+    update :@tailwind base;
+            @tailwind components;
+            @tailwind utilities;  => in index.css
+
+        shadcn => create jsconfig.json file =>   
+                    update ""compilerOptions": {
+                    "baseUrl": ".",
+                    "paths": {
+                    "@/*": ["./src/*"]
+                    }
+                }"
+    replace: in vite.config.js => 
+        "import path from "path"
+        import react from "@vitejs/plugin-react"
+        import { defineConfig } from "vite"
+
+        export default defineConfig({
+        plugins: [react()],
+        resolve: {
+            alias: {
+            "@": path.resolve(__dirname, "./src"),
+            },
+        },
+        })"
+
+    install -> npx shadcn@latest init
+
+    install => npx shadcn@latest add button
+
+    run - npm run dev
+
+    install - npm i axios react-router-dom
+              npx shadcn@latest add tabs
+              npx shadcn@latest add card
+            npx shadcn@latest add input label select textarea card toast skeleton switch dropdown-menu checkbox
+
+
+
+
+
+
+Mongodb - mdsaifali040220
+pass - Mdsaif@123
+
