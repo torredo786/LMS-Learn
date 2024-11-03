@@ -1,3 +1,4 @@
+import { Skeleton } from "@/components/ui/skeleton";
 import { initialSignInFormData, initialSignUpFormData } from "@/config";
 import { registerService, loginService, chcekAuthService } from "@/services";
 import { createContext, useEffect, useState } from "react";
@@ -9,53 +10,68 @@ export default function AuthProvider({ children }) {
   const [signUpFormData, setSignUpFormData] = useState(initialSignUpFormData);
   const [auth, setAuth] = useState({
     authenticate: false,
-    user: null
-  })
+    user: null,
+  });
+  const [loading, setLoading] = useState(true);
 
-
-  async function handleRegisterUser(event){
+  async function handleRegisterUser(event) {
     event.preventDefault();
     const data = await registerService(signUpFormData);
   }
 
-  async function handleLoginUser(event){
+  async function handleLoginUser(event) {
     event.preventDefault();
     const data = await loginService(signInFormData);
-    if(data.success){
-      sessionStorage.setItem('accessToken', JSON.stringify(data.data.accessToken))
+    if (data.success) {
+      sessionStorage.setItem(
+        "accessToken",
+        JSON.stringify(data.data.accessToken)
+      );
       setAuth({
         authenticate: true,
-        user: data.data.user
-      })
-    }
-    else{
+        user: data.data.user,
+      });
+    } else {
       setAuth({
         authenticate: false,
-        user: null
-      })
+        user: null,
+      });
     }
   }
 
-  async function checkAuthUser(){
-    const data = await chcekAuthService();
+  async function checkAuthUser() {
+    try {
+      const data = await chcekAuthService();
 
-    if(data.success){
-      setAuth({
-        authenticate: true,
-        user: data.data.user
-      })
-    }
-    else{
-      setAuth({
-        authenticate: false,
-        user: null
-      })
+      if (data.success) {
+        setAuth({
+          authenticate: true,
+          user: data.data.user,
+        });
+        setLoading(false);
+      } else {
+        setAuth({
+          authenticate: false,
+          user: null,
+        });
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log("error:", error);
+      if (!error?.response?.data?.success) {
+        setAuth({
+          authenticate: false,
+          user: null,
+        });
+        setLoading(false);
+      }
     }
   }
+
   //chcek auth user
-  useEffect(()=>{
+  useEffect(() => {
     checkAuthUser();
-  }, [])
+  }, []);
   return (
     <AuthContext.Provider
       value={{
@@ -68,7 +84,7 @@ export default function AuthProvider({ children }) {
         auth,
       }}
     >
-      {children}
+      {loading ? <Skeleton /> : children}
     </AuthContext.Provider>
   );
 }

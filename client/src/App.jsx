@@ -7,6 +7,7 @@ import { AuthContext } from "./context/auth-context";
 import InstructorDashboardPage from "./pages/instructor";
 import StudentViewCommonLayout from "./components/student-view/common-layout";
 import StudentHomePage from "./pages/student/home";
+import NotFoundPage from "./pages/not-found";
 
 function App() {
   const { auth } = useContext(AuthContext);
@@ -56,6 +57,7 @@ function App() {
             user={auth?.user}
           />
         </Route>
+        <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
     </>
   );
