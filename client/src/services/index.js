@@ -13,7 +13,7 @@ export async function loginService(formData) {
   return data;
 }
 
-export async function chcekAuth() {
-  const {data} = await axiosInstance.post("/auth/chcek-auth");
+export async function chcekAuthService() {
+  const {data} = await axiosInstance.get("/auth/check-auth");
   return data;
 }
