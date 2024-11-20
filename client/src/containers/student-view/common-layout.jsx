@@ -1,9 +1,11 @@
-import React from 'react'
+import Navbar from "../../components/Navbar"
 
 const StudentViewCommonLayout = () => {
   return (
-    <div>StudentViewCommonLayout</div>
-  )
-}
+    <>
+      <Navbar/>
+    </>
+  );
+};
 
 export default StudentViewCommonLayout

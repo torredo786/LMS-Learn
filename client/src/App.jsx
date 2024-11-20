@@ -1,11 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import { Button } from "./components/ui/button";
 import AuthPage from "./pages/auth";
 import RouteGuard from "./components/route-guard";
 import { useContext } from "react";
 import { AuthContext } from "./context/auth-context";
 import InstructorDashboardPage from "./pages/instructor";
-import StudentViewCommonLayout from "./components/student-view/common-layout";
+import StudentViewCommonLayout from "./containers/student-view/common-layout";
 import StudentHomePage from "./pages/student/home";
 import NotFoundPage from "./pages/not-found";
 

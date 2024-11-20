@@ -1,6 +1,6 @@
-const User = require("../../models/User")
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken');
+const User = require("../../models/User");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const registerUser = async (req, res) => {
   const { userName, userEmail, password, role } = req.body;
@@ -18,50 +18,53 @@ const registerUser = async (req, res) => {
 
   const hashPassword = await bcrypt.hash(password, 10);
   const newUser = new User({
-    userName, userEmail, role, password: hashPassword
-  })
+    userName,
+    userEmail,
+    role,
+    password: hashPassword,
+  });
 
   await newUser.save();
 
   return res.status(201).json({
     success: true,
-    message: "User registered successfully!"
-  })
+    message: "User registered successfully!",
+  });
 };
 
-
-const loginUser = async(req, res)=>{
-  const {userEmail, password} = req.body;
-  const checkUser = await User.findOne({userEmail});
-  if(!checkUser || !(await bcrypt.compare(password, checkUser.password))){
+const loginUser = async (req, res) => {
+  const { userEmail, password } = req.body;
+  const checkUser = await User.findOne({ userEmail });
+  if (!checkUser || !(await bcrypt.compare(password, checkUser.password))) {
     return res.status(401).json({
       success: false,
-      message: "Invalid credentials!"
-    })
+      message: "Invalid credentials!",
+    });
   }
-  const accessToken = jwt.sign({
-    _id: checkUser._id, //id provided by mongodb
-    userName: checkUser.userName,
-    userEmail: checkUser.userEmail,
-    role: checkUser.role,
-  }, 'JWT_SECRET', {expiresIn: '120m'});
+  const accessToken = jwt.sign(
+    {
+      _id: checkUser._id, //id provided by mongodb
+      userName: checkUser.userName,
+      userEmail: checkUser.userEmail,
+      role: checkUser.role,
+    },
+    "JWT_SECRET",
+    { expiresIn: "120m" }
+  );
 
   res.status(200).json({
     success: true,
-    message: 'Logged in Successfully',
-    data:{
-      accessToken, user:{
+    message: "Logged in Successfully",
+    data: {
+      accessToken,
+      user: {
         _id: checkUser._id, //id provided by mongodb
-    userName: checkUser.userName,
-    userEmail: checkUser.userEmail,
-    role: checkUser.role,
-      }
-    }
-  })
-}
+        userName: checkUser.userName,
+        userEmail: checkUser.userEmail,
+        role: checkUser.role,
+      },
+    },
+  });
+};
 
-
-module.exports ={registerUser, loginUser};
-
-
-
+module.exports = { registerUser, loginUser };
