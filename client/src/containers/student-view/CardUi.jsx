@@ -1,7 +1,6 @@
 import React from "react";
 import { UserPlus, Eye, FileText } from "lucide-react";
 import "./styles/CardGrid.css";
-import gameLogo from "../../assets/gaming-console.png";
 import { cards } from "../../components/constant";
 
 const CardGrid = () => {
