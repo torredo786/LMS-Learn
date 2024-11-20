@@ -46,12 +46,15 @@ const AuthPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-14 flex items-center border-b">
-        <Link to={"/"} className="flex items-center justify-center">
-          <GraduationCap className="h-8 w-8 mr-4" />
-          <span className="font-extrabold text-xl">LMS LEARN</span>
-        </Link>
-      </header>
+      <nav className="fixed top-0 left-0 w-full bg-white shadow-lg z-50">
+        <div className="w-full mx-5 pl-4 pr-16 py-3 flex justify-between items-center">
+          {/* Logo */}
+          <Link to={"/"} className="flex items-center justify-center">
+            <GraduationCap className="h-8 w-8 mr-4" />
+            <span className="font-extrabold text-xl">Learn2Gether</span>
+          </Link>
+        </div>
+      </nav>
       <div className="flex items-center justify-center min-h-screen bg-background">
         <Tabs
           value={activeTab}
@@ -78,7 +81,7 @@ const AuthPage = () => {
                   formData={signInFormData}
                   setFormData={setSignInFormData}
                   isButtonDisabled={!chcekIfSignInFormValid()}
-                  handleSubmit={handleLoginUser }
+                  handleSubmit={handleLoginUser}
                 />
               </CardContent>
             </Card>
@@ -98,7 +101,7 @@ const AuthPage = () => {
                   formData={signUpFormData}
                   setFormData={setSignUpFormData}
                   isButtonDisabled={!chcekIfSignUpFormValid()}
-                  handleSubmit ={handleRegisterUser}
+                  handleSubmit={handleRegisterUser}
                 />
               </CardContent>
             </Card>

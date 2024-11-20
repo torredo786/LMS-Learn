@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Home, HelpCircle, LogOut, AlignJustify } from 'lucide-react';
 import { GraduationCap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [state, setState] = useState({
+    tabActive: "home"
+  });
 
   const handleLogout = () => {
     sessionStorage.removeItem("accessToken");
@@ -17,7 +20,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to={"/"} className="flex items-center justify-center">
           <GraduationCap className="h-8 w-8 mr-4" />
-          <span className="font-extrabold text-xl">LMS LEARN</span>
+          <span className="font-extrabold text-xl">Learn2Gether</span>
         </Link>
 
         {/* Mobile Menu Toggle */}
@@ -33,7 +36,9 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           <button 
-            className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors"
+            className={`flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors ${
+                state.tabActive === "home" ? "text-blue-600 font-semibold" : ""
+              }`}
           >
             <Home size={20} />
             <span>Home</span>
