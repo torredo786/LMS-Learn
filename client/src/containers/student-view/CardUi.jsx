@@ -2,12 +2,14 @@ import React, { useContext, useEffect } from "react";
 import { UserPlus, Eye, FileText } from "lucide-react";
 import "./styles/CardGrid.css";
 import { cards } from "../../components/constant";
-import { AuthContext } from "@/context/auth-context";
+import { useDispatch, useSelector } from "react-redux";
+import { getCardDataRequest } from "../../redux/actions/studentAction";
 
 const CardGrid = () => {
-  const { getCardData } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const { cardData, loading, error } = useSelector((state) => state.student);
   useEffect(() => {
-    getCardData();
+    dispatch(getCardDataRequest());
   }, []);
 
   return (
