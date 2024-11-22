@@ -67,4 +67,5 @@ client: axios, react-router-dom
 
 Mongodb - mdsaifali040220
 pass - Mdsaif@123
+nvm use 21.6.2 
 

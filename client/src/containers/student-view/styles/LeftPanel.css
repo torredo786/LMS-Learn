@@ -1,0 +1,8 @@
+/* Positioning for the toggle buttons */
+.custom-button-style {
+    position: absolute;
+    top: 20px;
+    z-index: 1000;
+  }
+
+  

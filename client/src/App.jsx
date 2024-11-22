@@ -1,17 +1,14 @@
-import { Route, Routes } from "react-router-dom"
-import { Button } from "./components/ui/button"
-import AuthPage from "./pages/auth"
-
-
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import MainRoutes from "./routes/MainRoutes";
 function App() {
-
   return (
     <>
-      <Routes>
-        <Route path="/auth" element={<AuthPage />}/>
-      </Routes>
+      <Provider store={store}>
+        <MainRoutes />
+      </Provider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
