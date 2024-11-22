@@ -4,19 +4,10 @@ import "../styles/LeftPanel.css"
 const LeftPanel = () => {
   const [panel1Open, setPanel1Open] = useState(false);
   const [panel2Open, setPanel2Open] = useState(false);
-  const [panelVisible, setPanelVisible] = useState(true); // State to control panel visibility
+  const [panelVisible, setPanelVisible] = useState(false); // State to control panel visibility
 
   return (
     <div>
-      {/* Button to toggle left panel visibility (arrow to open/close) */}
-      <button
-        onClick={() => setPanelVisible(!panelVisible)}
-        className="fixed top-14 left-64 z-20 bg-blue-500 text-white p-2 rounded-full custom-button-style"
-        style={{ display: panelVisible ? 'none' : 'block' }}
-      >
-        {">"}
-      </button>
-
       {/* Button to close left panel (cross icon) */}
       <button
         onClick={() => setPanelVisible(false)}

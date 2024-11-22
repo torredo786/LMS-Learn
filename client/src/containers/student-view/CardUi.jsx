@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { UserPlus, Eye, FileText } from "lucide-react";
 import "./styles/CardGrid.css";
 import { cards } from "../../components/constant";
+import { AuthContext } from "@/context/auth-context";
 
 const CardGrid = () => {
-  console.log("first,",cards)
+  const { getCardData } = useContext(AuthContext);
+  useEffect(() => {
+    getCardData();
+  }, []);
+
   return (
     <div className="svl-main">
       {cards?.map((item, index) => (
         <div className="container">
-          {console.log("card",item)}
-          <div
-            className="header"
-          >
+          {console.log("card", item)}
+          <div className="header">
             <div className="header-content">
-              <div
-                className="short-code"
-              >
+              <div className="short-code">
                 <img src={item?.logoUrl} alt={item?.shortcode} />
               </div>
               <p>{item?.title}</p>
@@ -29,7 +30,9 @@ const CardGrid = () => {
             </div>
             <div className="icon-container">
               <div className="icon">
-                <FileText style={{ fontSize: "1rem", color: "rgb(165 162 162)" }} />
+                <FileText
+                  style={{ fontSize: "1rem", color: "rgb(165 162 162)" }}
+                />
                 <span className="text">Document</span>
               </div>
 

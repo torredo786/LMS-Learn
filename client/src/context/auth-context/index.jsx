@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { initialSignInFormData, initialSignUpFormData } from "@/config";
-import { registerService, loginService, chcekAuthService } from "@/services";
+import { registerService, loginService, chcekAuthService, getCardDataService } from "@/services";
 import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext(null);
@@ -67,7 +67,10 @@ export default function AuthProvider({ children }) {
       }
     }
   }
-
+  async function getCardData() {
+    const data = await getCardDataService();
+    return data;
+  }
   //chcek auth user
   useEffect(() => {
     checkAuthUser();
@@ -82,6 +85,7 @@ export default function AuthProvider({ children }) {
         handleRegisterUser,
         handleLoginUser,
         auth,
+        getCardData,
       }}
     >
       {loading ? <Skeleton /> : children}
