@@ -5,7 +5,8 @@ import LeftPanel from "../../../containers/student-view/leftPanel/LeftPanel";
 import VideoPlayer from "../../../containers/videoPlayer/videoPlayer";
 import FilterUI from "../../../containers/student-view/FilterUI";
 import DsaMainPage from "../../../containers/student-view/DSA/DsaMainPage";
-
+import DsaMainPageNew from "../../../containers/student-view/DSA/DsaMainPageNew";
+import DsaMainPage2 from "../../../containers/student-view/DSA/DsaMainPage2";
 const StudentHomePage = () => {
   const [selectedFilter, setSelectedFilter] = useState("Development");
 
@@ -36,7 +37,9 @@ const StudentHomePage = () => {
         <CardUi />
       )}
       {(filter === "DSA" && selectedFilter === "DSA") && (
-        <DsaMainPage />
+        // <DsaMainPage />
+        // <DsaMainPage2 />
+        <DsaMainPageNew />
       )}
     </>
   );
