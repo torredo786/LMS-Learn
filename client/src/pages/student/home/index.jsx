@@ -8,7 +8,7 @@ import DsaMainPage from "../../../containers/student-view/DSA/DsaMainPage";
 import DsaMainPageNew from "../../../containers/student-view/DSA/DsaMainPageNew";
 import DsaMainPage2 from "../../../containers/student-view/DSA/DsaMainPage2";
 const StudentHomePage = () => {
-  const [selectedFilter, setSelectedFilter] = useState("DSA");
+  const [selectedFilter, setSelectedFilter] = useState("Development");
 
   const Filters = [
     { id: "Development", label: "Development" },
