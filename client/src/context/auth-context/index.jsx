@@ -41,8 +41,7 @@ export default function AuthProvider({ children }) {
 
   async function checkAuthUser() {
     try {
-      const data = await chcekAuthService();
-
+      const data = await chcekAuthService();    
       if (data.success) {
         setAuth({
           authenticate: true,

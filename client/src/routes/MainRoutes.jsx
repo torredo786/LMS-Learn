@@ -6,6 +6,10 @@ import { AuthContext } from "../context/auth-context";
 import InstructorDashboardPage from "../pages/instructor";
 import StudentHomePage from "../pages/student/home";
 import NotFoundPage from "../pages/not-found";
+import AboutPage from "../containers/components/AboutPage";
+import HelpPage from "../containers/components/HelpPage";
+import ProfilePage from "@/containers/components/ProfilePage";
+
 
 const MainRoutes = () => {
   const { auth } = useContext(AuthContext);
@@ -56,6 +60,36 @@ const MainRoutes = () => {
           />
         </Route>
         <Route path="*" element={<NotFoundPage/>}/>
+        <Route
+          path="/about"
+          element={
+            <RouteGuard
+              element={<AboutPage />}
+              authenticated={auth?.authenticate}
+              user={auth?.user}
+            />
+          }
+        />
+        <Route
+          path="/help"
+          element={
+            <RouteGuard
+              element={<HelpPage />}
+              authenticated={auth?.authenticate}
+              user={auth?.user}
+            />
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <RouteGuard
+              element={<ProfilePage />}
+              authenticated={auth?.authenticate}
+              user={auth?.user}
+            />
+          }
+        />
       </Routes>
   )
 }
