@@ -57,7 +57,7 @@ export const Topics = [
     difficulty: "Easy",
     estimatedTime: "30 min",
     progress: 0,
-    total: 15,
+    total: 41,
     subtopics: [
       {
         id: "array_1",
@@ -93,23 +93,23 @@ export const Topics = [
           },
         ],
         notes: `
-        // Find maximum sum of a subarray of size k
-        function maxSumSubarray(arr, n, k) {
-            let maxSum = 0, windowSum = 0;
-            for (let i = 0; i < n; i++) {
-                // Add the next element to the window
-                windowSum += arr[i];
-                
-                // Check if the window has reached the size k
-                if (i >= k - 1) {
-                    // Update max sum
-                    maxSum = Math.max(maxSum, windowSum);
-                    // Remove the first element of the window
-                    windowSum -= arr[i - (k - 1)];
-                }
-            }
-            return maxSum;
-        }
+        //arr = [1, 2, 3, 4, 5, 6] k = 3 ; o/p: 15
+        function maxSumSubarray(arr, k):
+            if k > length of arr:
+                return 0  // Invalid input case
+            window_sum = 0
+            max_sum = 0
+            // Step 1: Compute the sum of the first window (first k elements)
+            for i = 0 to k-1:
+                window_sum += arr[i]
+            // Step 2: Slide the window across the array
+            max_sum = window_sum  // Initialize max_sum with the sum of the first window
+            for i = k to length of arr - 1:
+                // Slide the window: subtract the element going out of the window, add the element coming into the window
+                window_sum = window_sum - arr[i - k] + arr[i]
+                // Update the max_sum if we get a larger sum
+                max_sum = max(max_sum, window_sum)
+            return max_sum
         `,
       },
       {
@@ -167,6 +167,21 @@ export const Topics = [
             time: "30 min",
           },
         ],
+        notes: `
+            //arr = [1, 2, 3, 4, 5, 6] target = 10; o/p: true
+            function findPairWithSum(arr, target):
+                left = 0  // Start pointer at the beginning
+                right = length of arr - 1  // End pointer at the end
+                while left < right:
+                    current_sum = arr[left] + arr[right]
+                    if current_sum == target:
+                        return true  // Pair found with sum equal to target
+                    if current_sum < target:
+                        left++  // Move the left pointer to the right to increase the sum
+                    else:
+                        right--  // Move the right pointer to the left to decrease the sum
+                return false  // No pair found
+        `,
       },
       {
         id: "array_3",
@@ -215,6 +230,23 @@ export const Topics = [
             time: "20 min",
           },
         ],
+        notes: `
+            //arr = [3, 4, 2, 1, 5] ; prefixSum = [3, 7, 9, 10, 15]
+            //getSubarraySum(prefixSum, 1, 3) = prefixSum[3] - prefixSum[0] = 10 - 3 = 7
+            function buildPrefixSum(arr):
+                n = length of arr
+                prefixSum = new array of size n
+                prefixSum[0] = arr[0]  // Initialize the first element
+                for i = 1 to n - 1:
+                    prefixSum[i] = prefixSum[i - 1] + arr[i]  // Cumulative sum
+                return prefixSum
+
+            function getSubarraySum(prefixSum, l, r):
+                if l == 0:
+                    return prefixSum[r]  // Sum from the start to index r
+                else:
+                    return prefixSum[r] - prefixSum[l - 1]  // Sum from index l to r
+        `,
       },
       {
         id: "array_4",
@@ -249,6 +281,18 @@ export const Topics = [
             time: "25 min",
           },
         ],
+        notes: `
+            //arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4] ; Max Sum Subarray = 6
+            function kadane(arr):
+                maxEndingHere = arr[0]  // Initialize with the first element
+                maxSoFar = arr[0]       // Initialize with the first element
+
+                for i = 1 to length(arr) - 1:
+                    maxEndingHere = max(arr[i], maxEndingHere + arr[i])  // Update max sum at current position
+                    maxSoFar = max(maxSoFar, maxEndingHere)  // Update overall maximum sum
+
+                return maxSoFar
+        `,
       },
       {
         id: "array_5",
@@ -283,6 +327,22 @@ export const Topics = [
             time: "25 min",
           },
         ],
+        notes: `
+            //arr = [1, 2, 3, 4, 5, 6] target = 10; o/p: true
+            function binarySearch(arr, target):
+                low = 0
+                high = length(arr) - 1
+
+                while low <= high:
+                    mid = (low + high) // 2  // Calculate middle index
+                    if arr[mid] == target:
+                        return mid  // Target found at index mid
+                    elif arr[mid] < target:
+                        low = mid + 1  // Search in the right half
+                    else:
+                        high = mid - 1  // Search in the left half
+                return -1  // Target not found
+        `,
       },
       {
         id: "array_6",
@@ -317,6 +377,24 @@ export const Topics = [
             time: "25 min",
           },
         ],
+        notes: `
+            //arr = [2, 0, 1, 2, 1, 0, 1, 2, 0] ; o/p: [0, 0, 0, 1, 1, 1, 2, 2, 2]
+            function dutchNationalFlag(arr):
+                low = 0
+                mid = 0
+                high = length(arr) - 1
+
+                while mid <= high:
+                    if arr[mid] == 0:
+                        swap(arr[low], arr[mid])  // Move 0 to the beginning
+                        low += 1
+                        mid += 1
+                    elif arr[mid] == 1:
+                        mid += 1  // Keep 1 in the middle
+                    else:  // arr[mid] == 2
+                        swap(arr[mid], arr[high])  // Move 2 to the end
+                        high -= 1   
+        `,
       },
       {
         id: "array_7",
@@ -344,6 +422,28 @@ export const Topics = [
             time: "20 min",
           },
         ],
+        notes: `
+            //intervals = [[1, 3], [2, 4], [5, 7], [6, 8], [8, 10]]
+            //merged intervals = [[1, 4], [5, 10]]
+            function mergeIntervals(intervals):
+                if intervals is empty:
+                    return []
+                // Sort intervals by their start times
+                sort(intervals, by: start)
+                merged = [intervals[0]]  // Start with the first interval
+                for i = 1 to length(intervals) - 1:
+                    current = intervals[i]
+                    lastMerged = merged[merged.length - 1]
+
+                    // Check if the current interval overlaps with the last merged one
+                    if current.start <= lastMerged.end:
+                        // Merge the intervals by updating the end time of the last merged interval
+                        lastMerged.end = max(lastMerged.end, current.end)
+                    else:
+                        // No overlap, add current interval to the result
+                        merged.append(current)
+                return merged
+        `,
       },
       {
         id: "array_8",
@@ -371,6 +471,29 @@ export const Topics = [
             time: "20 min",
           },
         ],
+        notes: `
+        //Pseudocode for Monotonic Increasing Stack:
+        //arr = [4, 3, 5, 2, 6]; Final stack (monotonically increasing): [2, 6]
+        function monotonicStack(arr):
+            stack = []
+            result = []
+            for i = 0 to length(arr) - 1:
+                while stack is not empty and stack[top] >= arr[i]:
+                    stack.pop()
+                stack.push(arr[i])
+            return result
+        //Pseudocode for Monotonic Decreasing Queue:
+        //arr = [1, 3, 1, 2, 5, 3, 6] ;k = 3  // window size
+        //Max in each window: [3, 3, 5, 5, 6]
+        function monotonicQueue(arr):
+            queue = deque()
+            result = []
+            for i = 0 to length(arr) - 1:
+                while queue is not empty and queue[back] <= arr[i]:
+                    queue.pop()
+                queue.push(arr[i])
+            return result
+        `,
       },
       {
         id: "array_9",
@@ -420,6 +543,29 @@ export const Topics = [
             time: "25 min",
           },
         ],
+        notes: `    
+            1. Initialize an unordered_map ; unordered_map<KeyType, ValueType> map;
+            2. Insert key-value pairs ; map[key] = value;
+            3. Search for a key ; if map.find(key) != map.end(): // Key found, retrieve the value ; value = map[key];
+            4. Delete a key-value pair ; map.erase(key);
+            5. Iterate through all elements ; for each (key, value) in map: // Access key and value
+            //in c++
+            int main() {
+                // Initialize an unordered_map
+                std::unordered_map<int, std::string> map;
+                // Insert some key-value pairs ; map[1] = "Apple";map[2] = "Banana";map[3] = "Cherry";
+                // Search for a key
+                if (map.find(2) != map.end()) {
+                    std::cout << "Key 2: " << map[2] << std::endl;  // Output: Banana
+                } else {
+                    std::cout << "Key 2 not found." << std::endl;
+                }
+                for (const auto& pair : map) {
+                    std::cout << pair.first << ": " << pair.second << std::endl;
+                }
+                return 0;
+            }
+        `,
       },
     ],
   },
