@@ -60,6 +60,8 @@ client: axios, react-router-dom
               npx shadcn@latest add card
             npx shadcn@latest add input label select textarea card toast skeleton switch dropdown-menu checkbox
 
+    npm install react-icons
+    npm install react-syntax-highlighter - for code format
 
 
 

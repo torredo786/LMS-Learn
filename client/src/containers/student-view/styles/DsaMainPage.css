@@ -1,0 +1,28 @@
+.comment {
+  color: #6a737d; /* Light gray color for comments */
+  font-style: italic; /* Italicize comments */
+}
+
+pre {
+  background-color: #2d2d2d; /* Dark background for code */
+  color: #f8f8f2; /* Light text color */
+  padding: 1rem; /* Add padding for readability */
+  border-radius: 0.5rem; /* Rounded corners */
+  overflow-x: auto; /* Horizontal scrolling for long lines */
+  font-family: "Courier New", Courier, monospace; /* Monospace font */
+}
+
+code {
+  color: #f8f8f2;
+}
+
+  
+.copied-message {
+  animation: fade-in-out 2s ease-in-out;
+}
+@keyframes fade-in-out {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
