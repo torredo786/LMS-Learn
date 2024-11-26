@@ -9,6 +9,9 @@ import NotFoundPage from "../pages/not-found";
 import AboutPage from "../containers/components/AboutPage";
 import HelpPage from "../containers/components/HelpPage";
 import ProfilePage from "@/containers/components/ProfilePage";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import PortfolioNewPage from "../containers/Portfolio/PortFolioPageNew";
 
 
 const MainRoutes = () => {
@@ -85,6 +88,16 @@ const MainRoutes = () => {
           element={
             <RouteGuard
               element={<ProfilePage />}
+              authenticated={auth?.authenticate}
+              user={auth?.user}
+            />
+          }
+        />
+        <Route
+          path="/portfolio"
+          element={
+            <RouteGuard
+              element={<PortfolioNewPage />}
               authenticated={auth?.authenticate}
               user={auth?.user}
             />

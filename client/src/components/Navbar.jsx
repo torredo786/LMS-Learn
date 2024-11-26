@@ -28,8 +28,8 @@ const Navbar = () => {
       <div className="w-full mx-5 pl-4 pr-16 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link to={"/"} className="flex items-center justify-center">
-          <GraduationCap className="h-8 w-8 mr-4" />
-          <span className="font-extrabold text-xl">Learn2Gether</span>
+          <GraduationCap className="h-8 w-8 mr-4 text-blue-900" />
+          <span className="text-2xl font-bold bg-gradient-to-r from-blue-900 via-pink-500 to-blue-700 bg-clip-text text-transparent">Learn2Gether</span>
         </Link>
 
         {/* Mobile Menu Toggle */}

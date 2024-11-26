@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ChevronDown, ArrowUp, Circle } from "lucide-react";
 import { FileText, X, Copy } from "lucide-react"; // Importing icons from Lucide React
 import "../styles/DsaMainPage.css";
 import { Topics } from "../../../../../Topics";
+import { AuthContext } from "../../../context/auth-context";
+import { ToastContainer } from "react-toastify";
 const DsaMainPage = () => {
+  const { showNotification } = useContext(AuthContext);
   const [expandedTopic, setExpandedTopic] = useState(null);
   const [completedItems, setCompletedItems] = useState([]);
   const [notesPopup, setNotesPopup] = useState({ show: false, subtopic: null });
@@ -30,6 +33,14 @@ const DsaMainPage = () => {
         : [...prev, itemId]
     );
   };
+  const handleNotesClick = (subtopic) => {
+    if (!subtopic.notes) {
+      showNotification({ message: "Coming Soon", type: "info" });
+    } else {
+      setNotesPopup({ show: true, subtopic });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#efe7e7] p-6">
       <div className="max-w-7xl mx-auto">
@@ -58,13 +69,17 @@ const DsaMainPage = () => {
             >
               <button
                 className="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-400 transition-colors"
+                disabled={Topic?.status !== "done"}
                 onClick={() =>
                   setExpandedTopic(expandedTopic === Topic.id ? null : Topic.id)
                 }
               >
                 <div className="flex items-center gap-4">
                   <span className="text-lg">Topic {Topic.id}:</span>
-                  <span className="text-lg">{Topic.title}</span>
+                  <span className="text-lg">
+                    {Topic.title}
+                    {Topic?.status !== "done" && "🔜"}
+                  </span>
                 </div>
                 <div className="flex items-center gap-4">
                   <span>
@@ -78,7 +93,6 @@ const DsaMainPage = () => {
                   />
                 </div>
               </button>
-              {console.log("Topic", Topic)}
               {expandedTopic === Topic.id && (
                 <div className="px-6 py-4 bg-gray-750 border-t border-gray-700">
                   {Topic.subtopics.map((subtopic) => (
@@ -90,9 +104,7 @@ const DsaMainPage = () => {
                         {subtopic.title}
                         <button
                           className="text-orange-400 hover:text-orange-500 bg-gray-700 p-2 rounded-lg"
-                          onClick={() =>
-                            setNotesPopup({ show: true, subtopic })
-                          }
+                          onClick={() => handleNotesClick(subtopic)}
                         >
                           <FileText size={20} />
                         </button>
@@ -111,7 +123,6 @@ const DsaMainPage = () => {
                               }
                               // onClick={() => toggleCompletion(problem.id)}
                             />
-                            {console.log("problem.url", problem.url)}
                             <a
                               className="text-sm text-white"
                               href={problem.url}
@@ -141,8 +152,8 @@ const DsaMainPage = () => {
           ))}
         </div>
         {notesPopup.show && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white rounded-lg shadow-lg p-4 max-w-4xl w-full relative">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-2">
+            <div className="bg-white rounded-lg shadow-lg p-4 max-w-4xl max-h-[95vh] overflow-auto w-full relative">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-semibold text-gray-800">
                   Notes for {notesPopup.subtopic.title}
@@ -190,6 +201,15 @@ const DsaMainPage = () => {
           </div>
         )}
       </div>
+      <ToastContainer
+        toastStyle={{
+          minHeight: "20px", // Adjust the height
+          padding: "2px 10px", // Reduce padding
+          fontSize: "14px", // Adjust font size for compact look
+          color: "#000000",
+          backgroundColor: "#cecbc2",
+        }}
+      />
     </div>
   );
 };

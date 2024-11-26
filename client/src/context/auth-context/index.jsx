@@ -2,6 +2,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { initialSignInFormData, initialSignUpFormData } from "@/config";
 import { registerService, loginService, chcekAuthService, getCardDataService } from "@/services";
 import { createContext, useEffect, useState } from "react";
+import { toast } from 'react-toastify';
+
 
 export const AuthContext = createContext(null);
 
@@ -70,6 +72,31 @@ export default function AuthProvider({ children }) {
     const data = await getCardDataService();
     return data;
   }
+  function showNotification({ message, type }) {
+    switch (type) {
+      case "success":
+        toast.success(message, {
+          autoClose: 2400,
+        });
+        break;
+      case "warning":
+        toast.warning(message, {
+          autoClose: 2400,
+        });
+        break;
+      case "info":
+        toast.info(message, {
+          autoClose: 2400,
+        });
+        break;
+      case "error":
+        toast.error(message, {
+          autoClose: 2400,
+        });
+      // default:
+      //   toast.success(message);
+    }
+  }
   //chcek auth user
   useEffect(() => {
     checkAuthUser();
@@ -85,6 +112,7 @@ export default function AuthProvider({ children }) {
         handleLoginUser,
         auth,
         getCardData,
+        showNotification,
       }}
     >
       {loading ? <Skeleton /> : children}

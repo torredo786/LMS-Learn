@@ -6,6 +6,7 @@ export const Topics = [
     estimatedTime: "25 min",
     progress: 0,
     total: 5,
+    status: "done",
     subtopics: [
       {
         id: "complexity_1",
@@ -14,40 +15,57 @@ export const Topics = [
           {
             id: "bo_1",
             title: "Analyzing Time Complexity",
+            url: "https://www.geeksforgeeks.org/understanding-time-complexity-simple-examples/",
             difficulty: "Easy",
             time: "10 min",
           },
           {
             id: "bo_2",
             title: "Analyzing Space Complexity",
+            url: "https://www.geeksforgeeks.org/g-fact-86/",
             difficulty: "Easy",
             time: "10 min",
           },
           {
             id: "bo_3",
-            title: "Best, Average and Worst Cases",
-            difficulty: "Medium",
-            time: "15 min",
-          },
-        ],
-      },
-      {
-        id: "complexity_2",
-        title: "Common Complexity Classes",
-        problems: [
-          {
-            id: "cc_1",
             title: "Constant, Linear and Quadratic Time",
+            url: "https://medium.com/@s.brianryu/big-o-notation-e52ce96d9486",
             difficulty: "Easy",
             time: "15 min",
           },
           {
-            id: "cc_2",
+            id: "bo_4",
             title: "Logarithmic and Linearithmic Time",
-            difficulty: "Medium",
+            url: "https://towardsdatascience.com/linear-time-vs-logarithmic-time-big-o-notation-6ef4227051fb?gi=6c6de40b41c9",
+            difficulty: "Easy",
+            time: "15 min",
+          },
+          {
+            id: "bo_5",
+            title: "Best, Average and Worst Cases",
+            url: "https://www.geeksforgeeks.org/worst-average-and-best-case-analysis-of-algorithms/",
+            difficulty: "Easy",
             time: "15 min",
           },
         ],
+        notes: `
+Big O notation describes the upper bound or worst-case time complexity of an algorithm, indicating how its runtime grows as the input size increases.
+
+Common Complexities:
+- O(1): Constant time – The algorithm runs in the same time regardless of input size.
+- O(log n): Logarithmic time – Runtime grows logarithmically (e.g., binary search).
+- O(n): Linear time – Runtime grows linearly with input size (e.g., linear search).
+- O(n log n): Linearithmic time – Found in efficient sorting algorithms (e.g., merge sort).
+- O(n²): Quadratic time – Often seen in algorithms with nested loops (e.g., bubble sort).
+- O(2^n): Exponential time – Runtime doubles with each input size increase (e.g., brute-force solutions).
+- O(n!): Factorial time – Extremely inefficient, grows factorially (e.g., traveling salesman problem).
+
+Key Points:
+- Time complexity measures how runtime increases with input size.
+- Space complexity measures how memory usage grows with input size.
+- Focus on the largest term: Drop constants and non-dominant terms when simplifying.
+
+        `,
       },
     ],
   },
@@ -58,29 +76,31 @@ export const Topics = [
     estimatedTime: "30 min",
     progress: 0,
     total: 41,
+    status: "done",
     subtopics: [
       {
         id: "array_1",
         title: "Sliding Window Technique",
+        url: "https://leetcode.com/discuss/interview-question/3722472/mastering-sliding-window-technique-a-comprehensive-guide",
         problems: [
           {
             id: "sw_1",
-            title: "Longest Substring Without Repeating Characters",
-            url: "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
-            difficulty: "Easy",
-            time: "15 min",
-          },
-          {
-            id: "sw_2",
-            title: "Minimum Size Subarray Sum",
-            url: "https://leetcode.com/problems/minimum-size-subarray-sum/description/",
-            difficulty: "Easy",
+            title: "Sliding Window Maximum",
+            url: "https://leetcode.com/problems/sliding-window-maximum/",
+            difficulty: "Medium",
             time: "20 min",
           },
           {
+            id: "sw_2",
+            title: "Longest Substring Without Repeating Characters",
+            url: "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+            difficulty: "Medium",
+            time: "25 min",
+          },
+          {
             id: "sw_3",
-            title: "Sliding Window Maximum",
-            url: "https://leetcode.com/problems/sliding-window-maximum/",
+            title: "Minimum Size Subarray Sum",
+            url: "https://leetcode.com/problems/minimum-size-subarray-sum/description/",
             difficulty: "Medium",
             time: "25 min",
           },
@@ -256,7 +276,7 @@ export const Topics = [
             id: "ka_1",
             title: "Maximum Subarray",
             url: "https://leetcode.com/problems/maximum-subarray/",
-            difficulty: "Easy",
+            difficulty: "Medium",
             time: "20 min",
           },
           {
@@ -309,8 +329,8 @@ export const Topics = [
             id: "ka_2",
             title: "Search Insert Position",
             url: "https://leetcode.com/problems/search-insert-position/description/",
-            difficulty: "Medium",
-            time: "25 min",
+            difficulty: "Easy",
+            time: "15 min",
           },
           {
             id: "ka_3",
@@ -352,7 +372,7 @@ export const Topics = [
             id: "ka_1",
             title: "Sort Colors",
             url: "https://leetcode.com/problems/sort-colors/description/",
-            difficulty: "Easy",
+            difficulty: "Medium",
             time: "20 min",
           },
           {
@@ -373,8 +393,8 @@ export const Topics = [
             id: "ka_4",
             title: "Split Array Largest Sum",
             url: "https://leetcode.com/problems/split-array-largest-sum/description/",
-            difficulty: "Medium",
-            time: "25 min",
+            difficulty: "Hard",
+            time: "30 min",
           },
         ],
         notes: `
@@ -404,7 +424,7 @@ export const Topics = [
             id: "ka_1",
             title: "Merge Intervals",
             url: "https://leetcode.com/problems/merge-intervals/description/",
-            difficulty: "Easy",
+            difficulty: "Medium",
             time: "20 min",
           },
           {
@@ -453,8 +473,8 @@ export const Topics = [
             id: "ka_1",
             title: "Next Greater Element I",
             url: "https://leetcode.com/problems/merge-intervals/description/",
-            difficulty: "Easy",
-            time: "20 min",
+            difficulty: "Medium",
+            time: "25 min",
           },
           {
             id: "ka_2",
@@ -468,7 +488,7 @@ export const Topics = [
             title: "Largest Rectangle in Histogram",
             url: "https://leetcode.com/problems/insert-interval/description/",
             difficulty: "Medium",
-            time: "20 min",
+            time: "25 min",
           },
         ],
         notes: `
@@ -506,13 +526,19 @@ export const Topics = [
             difficulty: "Easy",
             time: "20 min",
           },
-
+          {
+            id: "ka_5",
+            title: "Isomorphic Strings",
+            url: "https://leetcode.com/problems/isomorphic-strings/description/",
+            difficulty: "Easy",
+            time: "20 min",
+          },
           {
             id: "ka_2",
             title: "Longest Consecutive Sequence",
             url: "https://leetcode.com/problems/longest-consecutive-sequence/description/",
-            difficulty: "Easy",
-            time: "20 min",
+            difficulty: "Medium",
+            time: "25 min",
           },
           {
             id: "ka_3",
@@ -528,13 +554,7 @@ export const Topics = [
             difficulty: "Medium",
             time: "20 min",
           },
-          {
-            id: "ka_5",
-            title: "Isomorphic Strings",
-            url: "https://leetcode.com/problems/isomorphic-strings/description/",
-            difficulty: "Medium",
-            time: "20 min",
-          },
+          
           {
             id: "ka_6",
             title: "Determine if Two Strings Are Close",
@@ -575,7 +595,8 @@ export const Topics = [
     difficulty: "Easy",
     estimatedTime: "35 min",
     progress: 0,
-    total: 15,
+    total: 18,
+    status: "done",
     subtopics: [
       {
         id: "str_1",
@@ -584,18 +605,21 @@ export const Topics = [
           {
             id: "bs_1",
             title: "Reverse String",
+            url: "https://leetcode.com/problems/reverse-string/description/",
             difficulty: "Easy",
             time: "10 min",
           },
           {
             id: "bs_2",
             title: "Valid Palindrome",
+            url: "https://leetcode.com/problems/valid-palindrome/description/",
             difficulty: "Easy",
             time: "15 min",
           },
           {
             id: "bs_3",
             title: "String to Integer (atoi)",
+            url: "https://leetcode.com/problems/string-to-integer-atoi/description/",
             difficulty: "Medium",
             time: "20 min",
           },
@@ -608,18 +632,21 @@ export const Topics = [
           {
             id: "pm_1",
             title: "Implement strStr()",
+            url: "https://www.interviewbit.com/problems/implement-strstr/",
             difficulty: "Easy",
             time: "20 min",
           },
           {
             id: "pm_2",
             title: "Longest Common Prefix",
+            url: "https://leetcode.com/problems/longest-common-prefix/description/",
             difficulty: "Easy",
             time: "15 min",
           },
           {
             id: "pm_3",
             title: "Regular Expression Matching",
+            url: "https://leetcode.com/problems/regular-expression-matching/description/",
             difficulty: "Hard",
             time: "30 min",
           },
@@ -632,23 +659,108 @@ export const Topics = [
           {
             id: "sm_1",
             title: "Generate Parentheses",
+            url: "https://leetcode.com/problems/generate-parentheses/description/",
             difficulty: "Medium",
             time: "25 min",
           },
           {
             id: "sm_2",
             title: "Letter Combinations of Phone Number",
+            url: "https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/",
             difficulty: "Medium",
             time: "25 min",
           },
           {
             id: "sm_3",
             title: "Group Anagrams",
+            url: "https://leetcode.com/problems/group-anagrams/description/",
             difficulty: "Medium",
             time: "20 min",
           },
         ],
       },
+      {
+        id: "str_4",
+        title: "Sliding Window Technique",
+        problems: [
+          {
+            id: "swt_1",
+            title: "Longest Substring Without Repeating Characters",
+            url: "https://leetcode.com/problems/longest-substring-without-repeating-characters/description/",
+            difficulty: "Medium",
+            time: "25 min",
+          },
+          {
+            id: "swt_2",
+            title: "Fruits into Baskets",
+            url: "https://leetcode.com/problems/fruit-into-baskets/description/",
+            difficulty: "Medium",
+            time: "25 min",
+          },
+          {
+            id: "swt_3",
+            title: "Permutation in String",
+            url: "https://leetcode.com/problems/permutation-in-string/description/",
+            difficulty: "Medium",
+            time: "25 min",
+          },
+          {
+            id: "swt_4",
+            title: "Find All Anagrams in a String",
+            url: "https://leetcode.com/problems/find-all-anagrams-in-a-string/description/",
+            difficulty: "Medium",
+            time: "25 min",
+          },
+        ],
+      },
+      {
+        id: "str_5",
+        title: "Two Pointers",
+        problems: [
+          {
+            id: "tp_1",
+            title: "Valid Palindrome",
+            url: "https://leetcode.com/problems/valid-palindrome/description/",
+            difficulty: "Easy",
+            time: "20 min",
+          },
+          {
+            id: "tp_2",
+            title: "Longest Palindromic Substring",
+            url: "https://leetcode.com/problems/longest-palindromic-substring/description/",
+            difficulty: "Medium",
+            time: "25 min",
+          },
+        ],
+      },
+      {
+        id: "str_6",
+        title: "KMP (Knuth-Morris-Pratt) Algorithm / LPS Array",
+        problems: [
+          {
+            id: "kmp_1",
+            title: "Find the Index of the First Occurrence in a String",
+            url: "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/",
+            difficulty: "Easy",
+            time: "20 min",
+          },
+          {
+            id: "kmp_2",
+            title: "Shortest Palindrome",
+            url: "https://leetcode.com/problems/shortest-palindrome/description/",
+            difficulty: "Hard",
+            time: "25 min",
+          },
+          {
+            id: "kmp_3",
+            title: "Longest Happy Prefix",
+            url: "https://leetcode.com/problems/longest-happy-prefix/description/",
+            difficulty: "Hard",
+            time: "25 min",
+          },
+        ],
+      },
+      
     ],
   },
   {
