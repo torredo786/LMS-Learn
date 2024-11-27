@@ -5,7 +5,10 @@ const getCardData = async (req, res) => {
   return res.status(200).json({
     success: true,
     message: "Card data fetched successfully",
-    data: null,
+    data: {
+      title: "Card Title",
+      description: "Card Description",
+    },
   });
 };
 
