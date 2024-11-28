@@ -20,6 +20,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("accessToken");
+    localStorage.clear();
     window.location.href = "/auth";
   };
 

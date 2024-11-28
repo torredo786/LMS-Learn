@@ -24,7 +24,6 @@ const StudentHomePage = () => {
     localStorage.setItem("filter", e.target.value);
   };
   const filter = localStorage.getItem("filter");
-  console.log(filter, "filter", selectedFilter);
   return (
     <>
       <Navbar />
@@ -33,10 +32,8 @@ const StudentHomePage = () => {
         selectedFilter={selectedFilter}
         Filters={Filters}
       />
-      {(filter === "Development" || selectedFilter === "Development") && (
-        <CardUi />
-      )}
-      {(filter === "DSA" && selectedFilter === "DSA") && (
+      {selectedFilter === "Development" && <CardUi />}
+      {selectedFilter === "DSA" && (
         <DsaMainPage />
         // <DsaMainPage2 />
         // <DsaMainPageNew />
