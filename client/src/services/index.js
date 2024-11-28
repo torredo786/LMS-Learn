@@ -18,7 +18,9 @@ export async function chcekAuthService() {
   return data;
 }
 
-export async function getCardDataService() {
-  const { data } = await axiosInstance.get("/card/getCardData");
-  return data;
-}
+export const getCardDataService = async () => {
+  const response = await axiosInstance.get("/card/getCardData");
+  if (!response.data) throw new Error("Failed to fetch card data");
+  console.log("response", response.data); // Logs the actual data
+  return response.data; // Return the actual data, not the full response object
+};

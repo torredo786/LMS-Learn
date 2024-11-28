@@ -8,7 +8,7 @@ import { getCardDataService } from "@/services";
 function* handleFetchCardData() {
   try {
     const data = yield call(getCardDataService);
-    yield put(getCardDataSuccess(data.title));
+    yield put(getCardDataSuccess(data.data));
   } catch (error) {
     yield put(getCardDataFailure(error.message));
   }

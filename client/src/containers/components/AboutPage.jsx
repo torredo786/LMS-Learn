@@ -1,12 +1,13 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const AboutPage = () => {
   const navigate = useNavigate();
+  const { cardData, loading, error } = useSelector((state) => state.student);
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-
       <div className="pt-20 px-4 md:px-8 max-w-6xl mx-auto">
         <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-6">
